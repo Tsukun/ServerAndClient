@@ -1,0 +1,11 @@
+﻿  main.cpp
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(59): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(169): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(176): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(183): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(191): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(198): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(157): warning C4809: в операторе switch имеется ненужная метка "default"; все возможные метки "case" уже заданы
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(143): warning C4101: y: неиспользованная локальная переменная
+d:\githubpr\seabattle\course2\sea_battle\sea_battle\main.cpp(143): warning C4101: x: неиспользованная локальная переменная
+  Sea_Battle.vcxproj -> D:\githubpr\SeaBattle\Course2\Sea_Battle\Debug\Sea_Battle.exe
