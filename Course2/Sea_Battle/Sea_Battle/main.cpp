@@ -23,21 +23,24 @@ public:
 	int getX();
 	int getY();
 };
-void Client() 
+Battle Client(Battle data)
 {
 	IpAddress ip = IpAddress::getLocalAddress();
 	TcpSocket socket;
 	std::size_t received;
 	int x;
 	int y;
+	int shoot = 1;
 	socket.connect(ip, 2000);
+
+	socket.send((char*)&shoot, sizeof(shoot));
+
 	socket.receive((char*)&x, sizeof(x), received);
 	socket.receive((char*)&y, sizeof(x), received);
-	std::cout << x << std::endl;
-	std::cout << y << std::endl;
-	x = 1;
-	socket.send((char*)&x, sizeof(x));
-
+	data.setX(x);
+	data.setY(y);
+	std::cout << "x-" << x << "; y-" << y << std::endl;
+	return data;
 }
 Battle::Battle(String F)
 {
@@ -55,13 +58,12 @@ int Battle::getY() { return this->y; }
 
 int main()
 {
-	Client();
+	
 	srand(time(NULL));
 	// Объект, который, собственно, является главным окном приложения
 	RenderWindow window(VideoMode(1200, 600), "SFML Works!");
 
 	Battle data;
-
 	bool isMove = false;
 	bool turn = true;
 	float dX = 0;
@@ -140,17 +142,17 @@ int main()
 
 			break;
 		case false:
-			int x, y;
-
-			/*clientSend(data);
-			x = data.getX();
-			y = data.getY();
+		int x, y;
+		do{
+		data=Client(data);
+		x = data.getX();
+		y = data.getY();
 		} while (TileMap[x][y] == 'x' || TileMap[x][y] == '-');
 		if (TileMap[x][y] == '1')
 			TileMap[x][y] = 'x';
 		if (TileMap[x][y] == '0')
 			TileMap[x][y] = '-';
-		turn = true;*/
+			turn = true;
 			break;
 		default:
 			break;

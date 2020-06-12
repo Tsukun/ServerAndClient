@@ -1,2 +1,3 @@
 ﻿  Source.cpp
-  Server.vcxproj -> D:\githubpr\SeaBattle\server\Server\x64\Debug\Server.exe
+d:\githubpr\serverandclient\server\server\server\source.cpp(9): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Server.vcxproj -> D:\githubpr\ServerAndClient\server\Server\x64\Debug\Server.exe
