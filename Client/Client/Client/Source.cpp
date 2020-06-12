@@ -40,18 +40,17 @@ int main()
 	};
 	std::cout << "Connected" << std::endl;
 
-	int sizeMap = WIDTH_MAP;//Размер карты 
+	int sizeMap = 1;//Размер карты 
 
 	send(Connection, (char*)&sizeMap, sizeof(sizeMap), NULL);//отправка данных о размере
 
-	char buff[256]; //Буфер для хранения строк поля 
-	for (int i = 0; i < WIDTH_MAP; i++) {
+	//char buff[256]; //Буфер для хранения строк поля 
+	//for (int i = 0; i < WIDTH_MAP; i++) {
+	//	for(int j=0; j<WIDTH_MAP; j++) //Считывание данных из строки поля в буфер
+	//		buff[j] = ShipMap[i][j];
 
-		for(int j=0; j<WIDTH_MAP; j++) //Считывание данных из строки поля в буфер
-			buff[j] = ShipMap[i][j];
-
-		send(Connection, buff, sizeof(buff), NULL);//отправка данных о поле
-	}
+	//	send(Connection, buff, sizeof(buff), NULL);//отправка данных о поле
+	//}
 	
 	return 0;
 }

@@ -1,13 +1,26 @@
 #pragma comment(lib, "ws2_32.lib")
 #include <winsock2.h>
 #include <iostream>
-
+#include "time.h"
 
 #pragma warning(disable: 4996)
 
+//Функция полученяи рандомного выстрела на поле
+int FireX() 
+{
+	int x = 0;
+	x = rand() % 10;
+	return x;
+}
+int FireY()
+{
+	int  y = 0;
+	y = rand() % 10;
+	return y;
+}
 int main() 
 {
-	std::string ShipMap[10];
+	srand(time(NULL));
 	WSAData wsaData;
 	WORD DLLVersion = MAKEWORD(2, 1); //Версия библиотеки
 	if (WSAStartup(DLLVersion, &wsaData) != 0) //Загрузка библиотеки
@@ -33,20 +46,20 @@ int main()
 	}
 	else {
 		std::cout << "Client connected was succesful" << std::endl;
-		int sizeMap;
-	
-		recv(newConnection, (char*)&sizeMap, sizeof(sizeMap), NULL);//Получение размера поля
-		//std::cout << sizeMap << std::endl;
-		char buff[256];//Буфер для считывания
-		for(int i = 0; i<sizeMap; i++){
-
-			recv(newConnection, buff, sizeof(buff), NULL);//Считывание данных в буфер 
-
-			for (int j = 0; j < sizeMap; j++) //Заполнение данных из буфер в поле 
-				ShipMap[i] += buff[j];
+		while (true) {
+			int shoot;	
+			recv(newConnection, (char*)&shoot, sizeof(shoot), NULL);
+		if (shoot == 1) {
+			int x, y;
+			x = FireX();
+			y = FireY();
+			send(newConnection, (char*)&x, sizeof(x), NULL);
+			send(newConnection, (char*)&y, sizeof(x), NULL);
+			std::cout << x << y;
+			shoot = 0;
+			}
 		}
-		for (int i = 0; i < sizeMap; i++)//Вывод поля
-			std::cout << ShipMap[i] << std::endl;
+		
 	}
 
 	return 0;
